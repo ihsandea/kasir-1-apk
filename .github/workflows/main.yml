@@ -1,15 +1,4 @@
-name: Build APK Kasir
-
-on: [push, workflow_dispatch]
-
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Ekstrak ZIP
-      run: unzip KasirIhsan_FINAL.zip
+KasirIhsan_FINAL.zip
       
     - name: Build APK Pake Buildozer
       uses: digreat/buildozer-action@v2
