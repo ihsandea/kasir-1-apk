@@ -1,19 +1,10 @@
-name: Build APK Kasir
-on: [push, workflow_dispatch]
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    steps:
-    - uses: actions/checkout@v4
-    - name: Ekstrak ZIP
-      run: unzip KasirIhsan_FINAL.zip
-    - name: Build APK Pake Buildozer
-      uses: nkiiiiid/buildozer-action@v1
-      with:
-        python-version: 3.10
-        workdir: .
-    - name: Upload Hasil APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: APK-Kasir-Ihsan
-        path: bin/*.apk
+- name: Install Python 3.10
+  uses: actions/setup-python@v5
+- name: Install dependensi Ubuntu
+  run: |
+    sudo apt update
+- name: Install Buildozer
+  run: |
+    pip install --upgrade Cython==0.29.33 buildozer
+- name: Build APK
+  run: buildozer android debug
